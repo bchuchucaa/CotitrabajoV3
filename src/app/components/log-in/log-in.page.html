@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-avatar slot="start">
+            <img src="assets/icon/iconlogo.png" alt="Ionic logo">
+        </ion-avatar>
+
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<div>
+    <img src="assets/img/logo.png" alt="Ionic logo">
+</div>
+<ion-content>
+
+    <form #loginForm="ngForm" novalidate>
+        <ion-card>
+            <ion-list>
+                <ion-item>
+                    <ion-label position="floating" color="primary" type="text">Username</ion-label>
+                    <ion-input name="username" [(ngModel)]="cliente.correo" type="text" spellcheck="false" autocapitalize="off" required>
+                    </ion-input>
+                </ion-item>
+
+
+
+                <ion-item>
+                    <ion-label position="floating" color="primary">Password</ion-label>
+                    <ion-input name="password" [(ngModel)]="cliente.contrasena" type="password" required>
+                    </ion-input>
+                </ion-item>
+
+
+            </ion-list>
+        </ion-card>
+        <ion-card>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" color="warning" (click)="googleLogin()">
+                        <ion-icon name="logo-google"></ion-icon>oogle
+                    </ion-button>
+                </ion-col>
+
+                <ion-col>
+                    <ion-button (click)=" loInCliente() " type="submit " expand="block ">Login</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="registroCliente() " color="success" expand="block ">Registrate
+                        <ion-icon name="pencil-outline"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-card>
+    </form>

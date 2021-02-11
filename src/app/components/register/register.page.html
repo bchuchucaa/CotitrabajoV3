@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Registrate</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="login-logo">
+        <img src="assets/img/logo.png" alt="Ionic logo">
+    </div>
+    <div class="register">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle>Registrate</ion-card-subtitle>
+                <ion-card-title>Tus datos</ion-card-title>
+            </ion-card-header>
+            <form>
+                <ion-item lines="full">
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input type="text" #email required></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="password" #password required></ion-input>
+                </ion-item>
+                <ion-row>
+                    <ion-col>
+                        <ion-button type="submit" (click)="registerClient(email, password)" expand="block">Register</ion-button>
+                    </ion-col>
+                    <ion-button type="submit" (click)="googleSignup()" expand="block">Register with Google</ion-button>
+
+                    <ion-col>
+
+                    </ion-col>
+                </ion-row>
+            </form>
+            <ion-row>
+                <ion-col>
+                    <p>
+                        <a routerLink="/login">Already have an account? </a>
+                    </p>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </div>
+</ion-content>

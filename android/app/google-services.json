@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "304796130309",
+    "firebase_url": "https://cotitrabajo-fb183-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cotitrabajo-fb183",
+    "storage_bucket": "cotitrabajo-fb183.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304796130309:android:827aaa208999bda91ed06c",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304796130309-78ug3ha4tk3256ndu1s5a7jnk0g0vk2a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "74456c5cc5812ad11dbcc3c481cb8d044d0d56be"
+          }
+        },
+        {
+          "client_id": "304796130309-krd8pnaq8nscisdngvp3h4e8okgvuodv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoDLvlIFg-1IGGNJksNFMssTyiJr3SNj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304796130309-krd8pnaq8nscisdngvp3h4e8okgvuodv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "304796130309-6b4e1s44jbcabcm3guapfloisdhq353k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.ionic.starter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

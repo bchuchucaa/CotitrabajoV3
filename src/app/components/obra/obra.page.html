@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>OBRA</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-item>
+            <div>
+                <ion-img [src]="obra.image?.url"></ion-img>
+            </div>
+        </ion-item>
+
+        <ion-card-header>Publicacion</ion-card-header>
+        <ion-item>
+            <ion-label position="floating">Titulo</ion-label>
+            <ion-input [(ngModel)]="obra.titulo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Categoria</ion-label>
+            <ion-input [(ngModel)]="obra.categoria"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Descripcion</ion-label>
+            <ion-textarea placeholder="Enter more information here..." [(ngModel)]="obra.descripcion"></ion-textarea>
+        </ion-item>
+
+
+        <!--<app-take-photo source="photo " (imageSelected)="imageSeleccionada($event) " (uploadFinished)="uploadFinished($event) "></app-take-photo>
+
+    -->
+
+
+        <footer>
+
+            <ion-button color="dark" expand="block" (click)="guardarObra() ">Actualizar</ion-button>
+
+            <ion-button color="danger" expand="block" (click)="cancelar() ">Cancelar</ion-button>
+        </footer>
+    </ion-card>
+</ion-content>

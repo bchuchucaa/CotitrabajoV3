@@ -1,0 +1,69 @@
+<!-- Large title -->
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title> PUBLICAR OBRA</ion-title>
+        <ion-avatar slot="start">
+            <img src="assets/icon/iconlogo.png" alt=" Ionic logo ">
+        </ion-avatar>
+    </ion-toolbar>
+</ion-header>
+
+<!--<ion-button (click)="tomarFoto() " color=" success ">Fotografia</ion-button>-->
+
+
+<ion-content>
+
+    <ion-card>
+        <div class="login-logo ">
+            <img src="assets/img/publica.jpg " alt="Ionic logo ">
+        </div>
+        <ion-card-header>Datos de tu obra</ion-card-header>
+        <ion-item>
+            <ion-input placeholder="Ingresa un titulo " [(ngModel)]="obra.titulo ">Titulo: </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-textarea placeholder="Ingresa una descripcion de tu obra " [(ngModel)]="obra.descripcion ">Descipcion: </ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label>Selecciona una categoria</ion-label>
+            <ion-select class="custom-options " [(ngModel)]="obra.categoria ">
+                <ion-select-option value="CARPINTERIA ">CARPINTERIA</ion-select-option>
+                <ion-select-option value="INDUSTRIAL ">INDUSTRIAL</ion-select-option>
+                <ion-select-option value="PLOMERIA ">PLOMERIA</ion-select-option>
+                <ion-select-option value="ARQUITECTURA ">ARQUITECTURA</ion-select-option>
+            </ion-select>
+
+
+
+        </ion-item>
+        <ion-item>
+            <ion-label>Sube una fotografia</ion-label>
+            <app-take-photo [source]=" 'gallery' " (imageSelected)="imageSeleccionada($event) " (uploadFinished)="uploadFinished($event) "></app-take-photo>
+
+        </ion-item>
+    </ion-card>
+    <!--<app-take-photo [source]=" 'photo' " (imageSelected)="imageSeleccionada($event) " (uploadFinished)="uploadFinished($event) "></app-take-photo>
+    -->
+
+    <ion-card *ngIf="obra.image ">
+        <ion-img [src]="imgData "></ion-img>
+        <ion-img [src]="obra.image?.url "></ion-img>
+    </ion-card>
+
+    <ion-card *ngIf="obra.image==null ">
+        <ion-label>Todavia no has seleccionado una imagen</ion-label>
+    </ion-card>
+    <div style="margin: 5%;margin-left: 20%; ">
+        <ion-button (click)="guardarObra() " color="success ">Publicar
+            <ion-icon name="checkmark-done-circle-outline "></ion-icon>
+        </ion-button>
+        <ion-button color="danger ">Cancelar
+            <ion-icon name="trash-outline "></ion-icon>
+        </ion-button>
+    </div>
+
+</ion-content>

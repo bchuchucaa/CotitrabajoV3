@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Cotitrabajo</string>
+    <string name="title_activity_main">Cotitrabajo</string>
+    <string name="package_name">io.ionic.starter</string>
+    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="fb_app_id">59523234234</string>
+    <string name="fb_app_name">hajmo.ba</string>
+    <string name="server_client_id">304796130309-6b4e1s44jbcabcm3guapfloisdhq353k.apps.googleusercontent.com</string>
+</resources>

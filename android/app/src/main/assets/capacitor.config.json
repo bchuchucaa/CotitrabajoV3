@@ -1,0 +1,21 @@
+{
+    "appId": "io.ionic.starter",
+    "appName": "Cotitrabajo",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 0
+        },
+        "GoogleAuth": {
+            "scopes": [
+                "profile",
+                "email"
+            ],
+            "serverClientId": "137551946457-91p6vp17kdqv44r1u6gqkd5uskk3dg79.apps.googleusercontent.com",
+            "forceCodeForRefreshToken": true
+        }
+    },
+    "cordova": {}
+}

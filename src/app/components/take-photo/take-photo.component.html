@@ -1,0 +1,6 @@
+<ion-button color="dark" (click)="tomarFoto()" *ngIf="source=='photo'">
+    <ion-icon name="camera-outline"></ion-icon> Fotografia
+</ion-button>
+<ion-button color="dark" icon="image-outline" (click)="recuperarImgagen()" *ngIf="source!=='photo'">
+    <ion-icon name="image-outline"></ion-icon> Galeria
+</ion-button>

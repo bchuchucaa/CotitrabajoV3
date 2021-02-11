@@ -1,0 +1,18 @@
+<ion-header>
+
+    <ion-title>Home</ion-title>
+
+</ion-header>
+
+<ion-content padding>
+    <h2>Datos del</h2>
+    <ion-list *ngFor="let usuario of usuarios">
+        <ion-icon name="accessibility-outline"></ion-icon>
+
+        <button>
+            {{usuario.id}} - {{usuario.name}}
+            
+            </button>
+        <button>{{ usuario.email }}</button> </ion-list>
+    <ion-button (click)="getusuarios()">CARGAR</ion-button>
+</ion-content>

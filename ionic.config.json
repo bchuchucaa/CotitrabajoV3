@@ -1,0 +1,8 @@
+{
+  "name": "Cotitrabajo",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
