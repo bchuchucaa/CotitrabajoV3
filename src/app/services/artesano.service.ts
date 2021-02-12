@@ -34,7 +34,7 @@ export class ArtesanoService {
   }
   getObras(area: string): Observable<any[]>{
     return this.angularfs.collection('obras',
-        ref => ref.where('categoria', '==', area)).valueChanges();
+        ref => ref.where('categoria', '==', area).where('estado', '==', false)).valueChanges();
   }
 
   loginWithGoogle(){

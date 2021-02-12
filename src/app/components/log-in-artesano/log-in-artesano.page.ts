@@ -27,7 +27,8 @@ export class LogInArtesanoPage implements OnInit {
         this.logeado = (JSON.parse(JSON.stringify(data[0])));
         console.log('Area', this.logeado['area']);
         console.log('Uid', this.logeado['uid']);
-
+        localStorage.setItem("area", this.logeado['area']);
+        localStorage.setItem("artesano", this.logeado['uid']);
         let navigationExtras: NavigationExtras = {
           state: {
             area: this.logeado['area'],

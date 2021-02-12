@@ -14,9 +14,13 @@ export class CotizacionPage implements OnInit {
   uid: String;
   obra: String;
   cotizacion: Cotizacion = new Cotizacion();
+  area:string;
 
   constructor(private route: ActivatedRoute, private router: Router,private cotizacionService: CotizacionService,public notificacionesService: NotificacionesService) {
 
+    this.area=localStorage.getItem("area")
+    this.uid=localStorage.getItem("artesano")
+    
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state){
         this.obra = this.router.getCurrentNavigation().extras.state.obra,
@@ -35,12 +39,24 @@ export class CotizacionPage implements OnInit {
     console.log(this.cotizacion);
     try{
     this.cotizacionService.saveCotizacion(this.cotizacion);
-    this.notificacionesService.notificacionToast("Se ha emviado tu cotizacion correctamente!");
+    this.notificacionesService.notificacionToast("Se ha emviado tu cotizacion !");
+    localStorage.setItem("area", this.area);
+    this.router.navigate(['/view-artesano']);
   }catch(error){
     console.error("Error tratando de emviar la cotizacion", error);
     throw error;
   
   }
+
+  
+  }
+
+  cancelar(){
+    localStorage.setItem("area", this.area);
+    this.router.navigate(['/view-artesano']);
+
+
+
   }
   
 

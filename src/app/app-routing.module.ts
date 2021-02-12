@@ -61,6 +61,10 @@ const routes: Routes = [
   {
     path: 'contact-artesano',
     loadChildren: () => import('./components/contact-artesano/contact-artesano.module').then( m => m.ContactArtesanoPageModule)
+  },
+  {
+    path: 'notificaciones-push',
+    loadChildren: () => import('./components/notificaciones-push/notificaciones-push.module').then( m => m.NotificacionesPushPageModule)
   }
 
 ];

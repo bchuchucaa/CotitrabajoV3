@@ -21,6 +21,10 @@ export class ViewArtesanoPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
               public artesanoService: ArtesanoService) {
+
+    this.area=localStorage.getItem("area")
+    this.uid=localStorage.getItem("artesano")
+
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state){
         this.area = this.router.getCurrentNavigation().extras.state.area,
@@ -41,6 +45,7 @@ export class ViewArtesanoPage implements OnInit {
     this.router.navigate(['/cotizacion'], navigationExtras);
   }
   ListarCotizaciones(String:any){
+    
     let navigationExtras: NavigationExtras = {
       state: {
         uid: this.uid,
