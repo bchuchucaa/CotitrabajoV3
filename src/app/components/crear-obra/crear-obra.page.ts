@@ -27,6 +27,7 @@ export class CrearObraPage implements OnInit {
     console.log(this.uidCliente);
   
     try{
+      this.obra.estado=false;
       this.obra.codigocliente=this.uidCliente;
       this.obraService.saveObra(this.obra);
       this.notificacionesService.notificacionToast("Tu obra se creo correctamente..!  :)");

@@ -32,7 +32,20 @@ export class CotizacionService {
           ref.where('obra', '==', obra).where('artesano', '==', artesano))
           .valueChanges();
     }
-S
+
+    //metodo para poner en contacto con artesano
+    getArtesanoContacto(artesano : string){
+      return this.afs.collection('artesanos', ref =>
+          ref.where('uid', '==', artesano)).valueChanges();
+
+    }
+    //metodo para finalizar obra
+    finalizarObra(uid: string){
+      const refObra = this.afs.collection("obras");
+     const aux = {estado: true};
+    refObra.doc(uid).set( {...aux}, { merge: true})
+    }
+   
 
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Cotizacion } from 'src/app/model/cotizacion';
 import { CotizacionService } from 'src/app/services/cotizacion.service';
@@ -31,4 +31,15 @@ export class LisCotizacionesClientePage implements OnInit {
     this.cotizaciones = this.cotizacionService.getCotizacionesCliente(this.obra);
   }
 
-}
+  Contacto(string:any){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        artesano: string,
+        obra : this.obra
+      }
+    };
+    this.router.navigate(['/contact-artesano'], navigationExtras);
+  }
+  }
+
+

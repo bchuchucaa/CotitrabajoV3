@@ -18,6 +18,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +38,7 @@ import {GooglePlus} from '@ionic-native/google-plus/ngx';
   providers: [
       GooglePlus,
     StatusBar,
+    CallNumber,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

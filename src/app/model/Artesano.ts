@@ -8,4 +8,5 @@ export class Artesano{
     deleted: boolean;
     calificacion = 0.0;
     area: string;
+    celular:string;
 }

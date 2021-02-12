@@ -6,6 +6,7 @@ export class Obra{
     titulo:string;
     descripcion:string;
     categoria:string;
+    estado:boolean;
     
     
 }
