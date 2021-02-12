@@ -14,9 +14,8 @@ export class ViewClientePage implements OnInit {
    uid:string;
     obras:Observable<any[]>;
   constructor(private route: ActivatedRoute, private router: Router,public obrasService:ObrasService) {
-  
-    this.uid = localStorage.getItem("uid");
-    console.log("consultando ", this.uid);
+    this.uid=localStorage.getItem("uid")
+    
 
     this.route.queryParams.subscribe(params => {
       console.log(params);
@@ -32,14 +31,16 @@ export class ViewClientePage implements OnInit {
    }
 
    ngOnInit() {
+    
   }
 crearNuevaObra(){
-  
+  this.verificarSesion();
   const url='/crear-obra/'+this.uid;
   console.log("Sending this route "+url);
   this.router.navigate([url]);
 }
 editarObra(obra:Obra){
+  this.verificarSesion();
   let navigationExtras: NavigationExtras = {
     queryParams: {
       obra: obra
@@ -56,5 +57,22 @@ editarContactoById(){
 }
 confirmarBorrado(uid:string){
 
+}
+singOut(){
+  localStorage.setItem("uid", "");
+  this.router.navigate(['log-in']);
+}
+verificarSesion(){
+  if(this.uid==null || this.uid==""){
+    this.router.navigate(['log-in']);
+  } 
+}
+ListarCotizaciones(String:any){
+  let navigationExtras: NavigationExtras = {
+    state: {
+      obra: String
+    }
+  };
+  this.router.navigate(['/lis-cotizaciones-cliente'], navigationExtras);
 }
 }

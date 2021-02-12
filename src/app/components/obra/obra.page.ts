@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Obra } from 'src/app/model/obra';
 import { ObrasService } from '../../services/obras.service';
+import { NotificacionesService } from '../../services/notificaciones.service';
 
 @Component({
   selector: 'app-obra',
@@ -13,10 +14,11 @@ export class ObraPage implements OnInit {
   uid:string;
   constructor(private route: ActivatedRoute, private router: Router,
     
-    public obraService: ObrasService) { 
-      console.log("globally",localStorage.getItem("uid"));
-      this.uid = this.route.snapshot.paramMap.get('uid');
-      this.uid = this.route.snapshot.paramMap.get('uid');
+    public obraService: ObrasService,public notificaciones:NotificacionesService) { 
+      this.uid=localStorage.getItem("uid")
+      
+      
+      
       this.route.queryParams.subscribe(params => {
         console.log(params);
         if (this.router.getCurrentNavigation().extras.queryParams) {
@@ -32,11 +34,23 @@ export class ObraPage implements OnInit {
   }
 
   guardarObra(){
+    this.obraService.saveObra(this.obra);
+    this.notificaciones.notificacionToast("Tu obra se a actualizado correctamente ..:)");
+    this.router.navigate(['view-cliente']);
     
   }
   cancelar(){
-    const url='/view-cliente/'+ this.uid;
-        this.router.navigate([url]); 
+
+        this.router.navigate(['view-cliente']);
+        
+         
   }
+  verificarSesion(){
+    if(this.uid==null || this.uid==""){
+      this.router.navigate(['log-in']);
+    }
+    
+  }
+
 
 }

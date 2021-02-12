@@ -1,0 +1,39 @@
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-avatar slot="start">
+            <img src="assets/icon/iconlogo.png" alt="Ionic logo">
+        </ion-avatar>
+        <ion-title>Cotizaciones</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-item-sliding *ngFor="let cotizacion of cotizaciones | async">
+            <ion-item>
+                <ion-row>
+                    <ion-col>
+                        <h2>{{cotizacion.Comentario}}</h2>
+                    </ion-col>
+                    <ion-col>
+                        <h1>{{cotizacion.Value_cotizar}}</h1>
+                    </ion-col>
+                </ion-row>
+
+
+            </ion-item>
+            <ion-item-options>
+                <!--
+            <ion-item-option color="primary" (click)="Contacto(cotizacion.artesano)">
+                <ion-icon name="cash-outline"></ion-icon>
+                Poner en contacto Artesano
+            </ion-item-option>
+            -->
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-card>
+
+</ion-content>

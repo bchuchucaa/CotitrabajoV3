@@ -30,9 +30,8 @@ guardarCliente(){
   try{
   this.clienteService.saveCliente(this.cliente);
   this.notificacionesService.notificacionToast("Te has registrado correctamente..!  :)");
-  const url='/view-cliente/'+this.cliente.uid;
-  console.log('Sending this route '+url);
-  this.router.navigate([url]);
+  
+  this.router.navigate(['log-in']);
 }catch(error){
   console.error("Error tratando de guardar el cliente", error);
   throw error;

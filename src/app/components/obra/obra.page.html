@@ -29,12 +29,24 @@
             <ion-label position="floating">Descripcion</ion-label>
             <ion-textarea placeholder="Enter more information here..." [(ngModel)]="obra.descripcion"></ion-textarea>
         </ion-item>
+        <ion-item>
+            <ion-label position="floating">Coordenadas y ubicacion</ion-label>
+        </ion-item>
+
+        <ion-item>
+
+            <ion-input [(ngModel)]="obra.longitud"></ion-input>
+            <ion-input [(ngModel)]="obra.latitude"></ion-input>
+            <ion-input [(ngModel)]="obra.address"></ion-input>
+        </ion-item>
 
 
-        <!--<app-take-photo source="photo " (imageSelected)="imageSeleccionada($event) " (uploadFinished)="uploadFinished($event) "></app-take-photo>
+        <agm-map>
+            <agm-marker [latitude]="obra.latitude" [longitude]="obra.longitud" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
+                <agm-info-window>UPS</agm-info-window>
+            </agm-marker>
 
-    -->
-
+        </agm-map>
 
         <footer>
 
@@ -43,4 +55,7 @@
             <ion-button color="danger" expand="block" (click)="cancelar() ">Cancelar</ion-button>
         </footer>
     </ion-card>
+
+
+
 </ion-content>

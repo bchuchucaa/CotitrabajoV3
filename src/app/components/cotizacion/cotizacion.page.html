@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>cotizacion</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <form #signupForm="ngForm" novalidate>
+        <ion-item>
+            <ion-label position="stacked" color="primary">Cotizacion</ion-label>
+            <ion-input [(ngModel)]="cotizacion.Value_cotizar" name="cotizacion " type="text " required>
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Comentario</ion-label>
+            <ion-input [(ngModel)]="cotizacion.Comentario" name="cotizacion " type="text " required>
+            </ion-input>
+        </ion-item>
+        <div class="ion-padding">
+            <ion-button (click)="guardarCotizacion()" type="submit" expand="block">Emviar </ion-button>
+        </div>
+    </form>
+
+</ion-content>

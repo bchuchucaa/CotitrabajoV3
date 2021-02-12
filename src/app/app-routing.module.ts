@@ -68,6 +68,34 @@ const routes: Routes = [
   {
     path: 'obra',
     loadChildren: () => import('./components/obra/obra.module').then( m => m.ObraPageModule)
+  },
+  {
+    path: 'cotizacion',
+    loadChildren: () => import('./components/cotizacion/cotizacion.module').then( m => m.CotizacionPageModule)
+  },
+  {
+    path: 'contact-artesano',
+    loadChildren: () => import('./components/contact-artesano/contact-artesano.module').then( m => m.ContactArtesanoPageModule)
+  },
+  {
+    path: 'lis-cotizaciones-artesano',
+    loadChildren: () => import('./components/lis-cotizaciones-artesano/lis-cotizaciones-artesano.module').then( m => m.LisCotizacionesArtesanoPageModule)
+  },
+  {
+    path: 'lis-cotizaciones-cliente',
+    loadChildren: () => import('./components/lis-cotizaciones-cliente/lis-cotizaciones-cliente.module').then( m => m.LisCotizacionesClientePageModule)
+  },
+  {
+    path: 'view-artesano',
+    loadChildren: () => import('./components/view-artesano/view-artesano.module').then( m => m.ViewArtesanoPageModule)
+  },
+  {
+    path: 'log-in-artesano',
+    loadChildren: () => import('./components/log-in-artesano/log-in-artesano.module').then( m => m.LogInArtesanoPageModule)
+  },
+  {
+    path: 'registro-artesano',
+    loadChildren: () => import('./components/registro-artesano/registro-artesano.module').then( m => m.RegistroArtesanoPageModule)
   }
 ];
 

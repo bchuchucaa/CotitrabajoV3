@@ -25,20 +25,23 @@ export class LogInPage implements OnInit {
   givenname=null;
   familyname=null;
   
-  constructor(private loadingCtrl: LoadingController,private route: ActivatedRoute, private router: Router,public clienteService:ClienteService,public notificacioneservice:NotificacionesService,private aSvc:AuthService ) { }
+  constructor(private loadingCtrl: LoadingController,private route: ActivatedRoute, private router: Router,public clienteService:ClienteService,public notificacioneservice:NotificacionesService,private aSvc:AuthService ) { 
+    localStorage.setItem("uid", "");
+  }
 
   ngOnInit() {
 
   }
 
   registroCliente(){
-    this.router.navigate(['/registro-cliente']);
+    this.router.navigate(['register']);
   }
   async loInCliente(){
     const loading = await this.loadingCtrl.create({
       message: 'Porfavor Espere..'
     });  
     await loading.present(); 
+
     console.log("correo ",this.cliente.correo,"contrasena ",this.cliente.contrasena);
    
    
@@ -50,12 +53,16 @@ export class LogInPage implements OnInit {
    
    if(codigo!=null){
       const url='/view-cliente/'+ codigo;
+      
       this.router.navigate([url]);
       
+      loading.dismiss();
    }else{
+    loading.dismiss();
     this.notificacioneservice.notificacionToast("No pudimos encontrar tu cuenta..!  :(");
     this.router.navigate(['/log-in']);
   } 
+
 
   }
 

@@ -37,6 +37,10 @@
                             <ion-icon slot="start " ios="ellipsis-horizontal " md="ellipsis-vertical "></ion-icon>
                             Editar
                         </ion-item-option>
+                        <ion-item-option color="primary" (click)="ListarCotizaciones(obra.uid)">
+                            <ion-icon slot="start" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+                            Cotizaciones
+                        </ion-item-option>
                         <ion-item-option color="secondary " (click)="confirmarBorrado(obra.uid) ">
                             <ion-icon slot="start " name="archive "></ion-icon>
                             Eliminar
@@ -49,6 +53,19 @@
 
     </ion-content>
     <footer>
-        <ion-button (click)="crearNuevaObra() " expand="block">NUEVA OBRA</ion-button>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="crearNuevaObra() " color="primary" expand="block">Crear nueva obra</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-fab-button color="danger" (click)="singOut()" style="float: right;">
+
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                </ion-fab-button>
+            </ion-col>
+
+
+        </ion-row>
+
     </footer>
 </ion-app>

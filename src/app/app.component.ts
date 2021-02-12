@@ -13,20 +13,11 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
-    {
-      title: 'LogIn',
-      url: '/login',
-      icon: 'mail'
-    },
+   
     {
       title: 'Crear obra',
       url: '/crear-obra',
       icon: 'paper-plane'
-    },
-    {
-      title: 'localizacion',
-      url: '/localizacion',
-      icon: 'heart'
     },
     {
       title: 'Vista Cliente',
@@ -35,8 +26,8 @@ export class AppComponent implements OnInit {
     },
 
     {
-      title: 'CrearObra',
-      url: '/crear-obra',
+      title: 'register-client',
+      url: '/registro-cliente',
       icon: 'archive'
     },
     {
@@ -69,7 +60,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    this.router.navigate(['log-in']);
+    const path = window.location.pathname.split('folder/')[1];
+    if (path !== undefined) {
+      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
   }
+}
 }

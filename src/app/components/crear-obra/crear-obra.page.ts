@@ -9,6 +9,8 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { LocationService } from '../../services/location.service';
+import { Localizacion } from '../../model/localizacion';
 export interface MyData {
   name: string;
   filepath: string;
@@ -35,7 +37,21 @@ export class CrearObraPage implements OnInit {
 
   imgData: string;
   imgURL: string;
+  //PARA EL MAPA
+  current = {
+    latitude: '',
+    longitude: '',
+    address: ''
+  }
 
+  newLocation = {
+    latitude: '',
+    longitude: '',
+    address: ''
+  }
+  title = 'My first AGM project';
+  lat = 51.678418;
+  lng = 7.809007;
 
   private imageCollection: AngularFirestoreCollection<MyData>;
 
@@ -43,8 +59,8 @@ export class CrearObraPage implements OnInit {
   idImgObra:string;
 
   obra :Obra =new Obra();
-  constructor(private camera:Camera,private storage:AngularFireStorage,private database:AngularFirestore, private route: ActivatedRoute, private router: Router,public obraService:ObrasService,public notificacionesService: NotificacionesService) { 
-    this.uidCliente = this.route.snapshot.paramMap.get('uid');
+  constructor(private camera:Camera,private storage:AngularFireStorage,private database:AngularFirestore, private route: ActivatedRoute, private router: Router,public obraService:ObrasService,public notificacionesService: NotificacionesService,private locationService: LocationService) { 
+    this.uidCliente=localStorage.getItem("uid")
     console.log("consultando ", this.uidCliente);
     obraService:ObrasService;
     this.isUploaded=false;
@@ -54,16 +70,23 @@ export class CrearObraPage implements OnInit {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.current = await this.locationService.getCurrentLocation();
+   
   }
 
   guardarObra(){
     console.log(this.uidCliente);
+    this.verificarSesion();
   
     try{
       this.obra.codigocliente=this.uidCliente;
+      this.obra.latitude=this.newLocation.latitude;
+      this.obra.longitud=this.newLocation.longitude;
+      this.obra.address=this.newLocation.address;
       console.log(this.obra.image);
       this.obraService.saveObra(this.obra);
+    
       let navigationExtras: NavigationExtras ={
         queryParams:{
           obra: this.obra,
@@ -162,6 +185,20 @@ export class CrearObraPage implements OnInit {
     console.log(this.obra.image);
     console.log("-----------------");
   }
-
+  verificarSesion(){
+    if(this.uidCliente==null || this.uidCliente==""){
+      this.router.navigate(['log-in']);
+    }
+    
+  }
+  //para el mapa
+ 
+  setNewLocation(event) {
+    if (event) {
+      this.newLocation.latitude = event.lat;
+      this.newLocation.longitude = event.lng;
+      this.locationService.getAddressOfLocation(this.newLocation);
+    }
+  }
   
 }
