@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>completar-registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #signupForm="ngForm" novalidate>
+    <div>
+      <ion-item>
+        <ion-label>Selecciona una categoria</ion-label>
+        <ion-select class="custom-options" [(ngModel)]="artesano.area" name="area">
+          <ion-select-option value="CARPINTERIA">CARPINTERIA</ion-select-option>
+          <ion-select-option value="INDUSTRIAL">INDUSTRIAL</ion-select-option>
+          <ion-select-option value="PLOMERIA">PLOMERIA</ion-select-option>
+          <ion-select-option value="ARQUITECTURA">ARQUITECTURA</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </form>
+  <ion-button (click)="saveByGoogle()" type="submit" expand="block"> REGISTRARME </ion-button>
+</ion-content>
