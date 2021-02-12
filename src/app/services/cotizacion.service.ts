@@ -23,7 +23,7 @@ export class CotizacionService {
    //Metodo para listar las cotizaciones de la obra  del cliente
    getCotizacionesCliente(uid:string): Observable<any[]>{
     return this.afs.collection("cotizaciones",
-            ref => ref.where("obra", "==", uid)).valueChanges();
+            ref => ref.where("obra", "==", uid).where("deleted", "==", false)).valueChanges();
   }
 
     //Metodo para listar las cotizaciones de la obra  del artesano

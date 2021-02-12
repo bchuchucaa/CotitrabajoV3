@@ -36,6 +36,7 @@ export class CotizacionPage implements OnInit {
    guardarCotizacion(){
      this.cotizacion.obra = this.obra;
      this.cotizacion.artesano = this.uid;
+     this.cotizacion.deleted = false;
     console.log(this.cotizacion);
     try{
     this.cotizacionService.saveCotizacion(this.cotizacion);
@@ -54,9 +55,6 @@ export class CotizacionPage implements OnInit {
   cancelar(){
     localStorage.setItem("area", this.area);
     this.router.navigate(['/view-artesano']);
-
-
-
   }
   
 

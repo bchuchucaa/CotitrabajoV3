@@ -14,8 +14,10 @@
         <h3>{{artesano.area}}</h3>
         <h3>{{artesano.celular}}</h3>
         <ion-button (click)='Llamar(artesano.celular)'> Llamar </ion-button>
-
         <ion-button (click)='finalizarObra()'> Finalizar obra </ion-button>
+        <div class="ion-padding">
+          <ion-button (click)="cancelar()" type="submit" color="danger" expand="block">Cancelar </ion-button>
+        </div>
       </ion-label>
     </ion-item>
   </ion-item-sliding>

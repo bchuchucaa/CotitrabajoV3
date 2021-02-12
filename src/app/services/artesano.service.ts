@@ -37,6 +37,11 @@ export class ArtesanoService {
         ref => ref.where('categoria', '==', area).where('estado', '==', false)).valueChanges();
   }
 
+  getObrasMias(area: string, uidobrero:string): Observable<any[]>{
+    return this.angularfs.collection('obras',
+        ref => ref.where('categoria', '==', area).where('estado', '==', true).where('codigoobrero', '==', uidobrero)).valueChanges();
+  }
+
   loginWithGoogle(){
     if (this.platform.is('cordova')){
     return this.google.login({}).then(response => {

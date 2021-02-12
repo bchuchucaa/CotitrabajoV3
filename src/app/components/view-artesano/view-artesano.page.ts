@@ -12,11 +12,9 @@ import {ArtesanoService} from '../../services/artesano.service';
 export class ViewArtesanoPage implements OnInit {
   area: string;
   uid:string;
-
   bandera:boolean = false;
   cotizacion: Cotizacion = new Cotizacion();
   cotizar_valor : String;
-
   obras: Observable<any[]>;
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -45,7 +43,6 @@ export class ViewArtesanoPage implements OnInit {
     this.router.navigate(['/cotizacion'], navigationExtras);
   }
   ListarCotizaciones(String:any){
-    
     let navigationExtras: NavigationExtras = {
       state: {
         uid: this.uid,
@@ -53,6 +50,10 @@ export class ViewArtesanoPage implements OnInit {
       }
     };
     this.router.navigate(['/lis-cotizaciones-artesano'], navigationExtras);
+  }
+  misObras(){
+    this.router.navigate(['/mis-obras-artesano']);
+
   }
 
   saveCotizacion(){

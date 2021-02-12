@@ -36,6 +36,7 @@ export class LogInPage implements OnInit {
    
    if(codigo!=null){
       const url='/view-cliente/'+ codigo;
+      
       this.router.navigate([url]);
    }else{
     this.notificacioneservice.notificacionToast("No pudimos encontrar tu cuenta..!  :(");

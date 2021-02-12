@@ -11,9 +11,12 @@ import { ObrasService } from 'src/app/services/obras.service';
   styleUrls: ['./view-cliente.page.scss'],
 })
 export class ViewClientePage implements OnInit {
-   uid:string;
+    uid:string;
     obras:Observable<any[]>;
+
   constructor(private route: ActivatedRoute, private router: Router,public obrasService:ObrasService) {
+
+
     this.uid = this.route.snapshot.paramMap.get('uid');
     console.log("consultando ", this.uid);
    }
@@ -32,6 +35,9 @@ editarObra(obra:Obra){
 }
 
 ListarCotizaciones(String:any){
+
+  localStorage.setItem("uid" , this.uid)
+
   let navigationExtras: NavigationExtras = {
     state: {
       obra: String

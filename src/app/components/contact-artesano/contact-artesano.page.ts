@@ -5,6 +5,7 @@ import { Artesano } from 'src/app/model/Artesano';
 import { CotizacionService } from 'src/app/services/cotizacion.service';
 import { NotificacionesService } from 'src/app/services/notificaciones.service';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { ObrasService } from 'src/app/services/obras.service';
 
 @Component({
   selector: 'app-contact-artesano',
@@ -17,7 +18,12 @@ export class ContactArtesanoPage implements OnInit {
   obra:string;
   artesanos: Observable<any[]>;
 
-  constructor(private route: ActivatedRoute, private router: Router,private cotizacionService: CotizacionService,public notificacionesService: NotificacionesService,private callNumber: CallNumber) { 
+  
+
+  constructor(private route: ActivatedRoute, private router: Router,private cotizacionService: CotizacionService,public notificacionesService: NotificacionesService,private callNumber: CallNumber,public obrasService:ObrasService) { 
+
+
+    
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state){
@@ -43,6 +49,13 @@ export class ContactArtesanoPage implements OnInit {
 }
 finalizarObra(){
   this.cotizacionService.finalizarObra(this.obra);
+  this.obrasService.finalizarObra(this.obra,this.artesano)
   console.log('finalizar obra' ,this.obra );
+
+  this.router.navigate(['/view-cliente']);
 }
+cancelar(){
+  this.router.navigate(['/view-cliente']);
+}
+
 }

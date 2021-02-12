@@ -27,4 +27,11 @@ export class ObrasService {
             ref => ref.where("codigocliente", "==", uid)).valueChanges();
   }
 
+     //metodo para guaradar uid artesano en obra
+     finalizarObra(uid: string,uidartesano: string){
+      const refObra = this.afs.collection("obras");
+     const aux = {codigoobrero: uidartesano};
+    refObra.doc(uid).set( {...aux}, { merge: true})
+    }
+
 }

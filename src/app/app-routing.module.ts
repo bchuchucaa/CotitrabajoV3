@@ -46,7 +46,8 @@ const routes: Routes = [
   {
     path: 'login-artesano',
     loadChildren: () => import('./components/log-in-artesano/log-in-artesano.module').then( m => m.LogInArtesanoPageModule)
-  },  {
+  },
+  {
     path: 'cotizacion',
     loadChildren: () => import('./components/cotizacion/cotizacion.module').then( m => m.CotizacionPageModule)
   },
@@ -65,6 +66,11 @@ const routes: Routes = [
   {
     path: 'notificaciones-push',
     loadChildren: () => import('./components/notificaciones-push/notificaciones-push.module').then( m => m.NotificacionesPushPageModule)
+  },
+
+  {
+    path: 'mis-obras-artesano',
+    loadChildren: () => import('./components/mis-obras-artesano/mis-obras-artesano.module').then( m => m.MisObrasArtesanoPageModule)
   }
 
 ];
