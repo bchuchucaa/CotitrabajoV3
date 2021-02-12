@@ -21,19 +21,25 @@ export class ArtesanoService {
     const refArtesano = this.angularfs.collection('artesanos');
     if (artesano.uid == null){
       artesano.uid = this.angularfs.createId();
-      artesano.deleted = false;
     }
+    artesano.deleted = false;
     refArtesano.doc(artesano.uid).set(Object.assign({}, artesano), {merge: true});
   }
+
   loginArtesano(correo: string, contrasenia: string): Observable<any>{
     return this.angularfs.collection('artesanos', ref =>
         ref.where('correo', '==', correo).where('contrasenia', '==', contrasenia))
         .valueChanges();
   }
+
   getObras(area: string): Observable<any[]>{
     return this.angularfs.collection('obras',
         ref => ref.where('categoria', '==', area)).valueChanges();
   }
 
-  
+  getArtesanoByUid(uid: string): Observable<any[]>{
+    return this.angularfs.collection('artesanos',
+        ref => ref.where('uid', '==', uid)).valueChanges();
+  }
+
 }

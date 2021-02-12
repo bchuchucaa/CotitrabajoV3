@@ -30,7 +30,7 @@ export class CompletarRegistroPage implements OnInit {
         this.notificationService.notificacionToast('Por favor escoja una area');
       }else {
         this.artesanoService.saveArtesano(this.artesano);
-        this.notificationService.notificacionToast('Te has registrado correctamente..!  :)');
+        this.notificationService.notificacionToast('Te has registrado correctamente..! :)');
         const navigationExtras: NavigationExtras = {
           state: {
             area: this.artesano.area,

@@ -20,8 +20,8 @@ export class ViewArtesanoPage implements OnInit {
 
   obras: Observable<any[]>;
   constructor(private route: ActivatedRoute, private router: Router,
-    public artesanoService: ArtesanoService) { 
-      this.route.queryParams.subscribe(params => {
+    public artesanoService: ArtesanoService){
+     this.route.queryParams.subscribe(params => {
         if (this.router.getCurrentNavigation().extras.state){
           this.area = this.router.getCurrentNavigation().extras.state.area,
           this.uid = this.router.getCurrentNavigation().extras.state.uid;

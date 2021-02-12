@@ -12,11 +12,6 @@
     <form #signupForm="ngForm" novalidate>
         <ion-list lines="none">
             <ion-item>
-                <ion-label position="stacked" color="primary">CEDULA</ion-label>
-                <ion-input [(ngModel)]="artesano.cedula" name="cedula " type="text " required>
-                </ion-input>
-            </ion-item>
-            <ion-item>
                 <ion-label position="stacked " color="primary ">NOMBRES</ion-label>
                 <ion-input [(ngModel)]="artesano.nombres " name="nombres " type="text " required>
                 </ion-input>
@@ -50,15 +45,16 @@
                 </ion-select>
             </ion-item>
         </div>
-        <div class="ion-padding">
-            <ion-button (click)="saveArtesano()" type="submit" expand="block"> REGISTRARME </ion-button>
-        </div>
     </form>
 
     <ion-grid>
         <ion-row>
-            <ion-col size="3">
+            <ion-col >
+                <ion-button (click)="saveArtesano()" type="submit" expand="block"> REGISTRARME </ion-button>
+            </ion-col>
+            <ion-col >
 
+                <ion-button (click)="saveArtesanoByGoogle()" type="submit" expand="block" color="danger"><ion-icon name="logo-google" ></ion-icon> </ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>

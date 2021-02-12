@@ -1,5 +1,4 @@
 export class Obra{
-    
     uid:string;
     codigocliente:string;
     codigoobrero:string;
@@ -7,6 +6,7 @@ export class Obra{
     descripcion:string;
     categoria:string;
     image:any;
-    
-    
+    latitude: string;
+    longitud: string;
+    address: string;
 }

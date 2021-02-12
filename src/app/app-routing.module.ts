@@ -96,6 +96,10 @@ const routes: Routes = [
   {
     path: 'registro-artesano',
     loadChildren: () => import('./components/registro-artesano/registro-artesano.module').then( m => m.RegistroArtesanoPageModule)
+  },
+  {
+    path: 'completar-registro',
+    loadChildren: () => import('./components/completar-registro/completar-registro.module').then( m => m.CompletarRegistroPageModule)
   }
 ];
 

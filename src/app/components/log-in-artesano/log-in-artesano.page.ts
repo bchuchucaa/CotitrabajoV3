@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {NotificacionesService} from '../../services/notificaciones.service';
 import {ArtesanoService} from '../../services/artesano.service';
 import { Artesano } from 'src/app/model/artesano';
+import {Plugins} from '@capacitor/core';
 @Component({
   selector: 'app-log-in-artesano',
   templateUrl: './log-in-artesano.page.html',
@@ -26,21 +27,41 @@ export class LogInArtesanoPage implements OnInit {
         this.logeado = (JSON.parse(JSON.stringify(data[0])));
         console.log('Area', this.logeado['area']);
         console.log('Uid', this.logeado['uid']);
-
-        let navigationExtras: NavigationExtras = {
+        const navigationExtras: NavigationExtras = {
           state: {
             area: this.logeado['area'],
             uid: this.logeado['uid']
           }
         };
         this.router.navigate(['/view-artesano'], navigationExtras);
-        
       }else{
         this.notificacioneservice.notificacionToast('No pudimos encontrar tu cuenta..!  :(');
         this.router.navigate(['/log-in-artesano']);
       }
     });
+  }
 
+  async loginArtesanoByGoogle(){
+    const userGoogle = await Plugins.GoogleAuth.signIn() as any;
+    this.logeado.correo = userGoogle['email'];
+    this.logeado.contrasenia = userGoogle['id'];
+    this.artesanoService.loginArtesano(this.logeado.correo, this.logeado.contrasenia).subscribe( data => {
+      if (data.length > 0){
+        this.logeado = (JSON.parse(JSON.stringify(data[0])));
+        console.log('Area', this.logeado['area']);
+        console.log('Uid', this.logeado['uid']);
+        const navigationExtras: NavigationExtras = {
+          state: {
+            area: this.logeado['area'],
+            uid: this.logeado['uid']
+          }
+        };
+        this.router.navigate(['/view-artesano'], navigationExtras);
+      }else{
+        this.notificacioneservice.notificacionToast('Cuenta no registrada!');
+        this.router.navigate(['/log-in-artesano']);
+      }
+    });
   }
 
 }
