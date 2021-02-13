@@ -52,6 +52,7 @@ export class ViewArtesanoPage implements OnInit {
     this.router.navigate(['/lis-cotizaciones-artesano'], navigationExtras);
   }
   misObras(){
+    
     this.router.navigate(['/mis-obras-artesano']);
 
   }

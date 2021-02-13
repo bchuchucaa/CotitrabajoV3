@@ -49,6 +49,7 @@ export class ContactArtesanoPage implements OnInit {
 }
 finalizarObra(){
   this.cotizacionService.finalizarObra(this.obra);
+  
   this.obrasService.finalizarObra(this.obra,this.artesano)
   console.log('finalizar obra' ,this.obra );
 

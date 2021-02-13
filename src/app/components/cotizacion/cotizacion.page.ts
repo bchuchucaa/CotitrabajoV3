@@ -36,6 +36,7 @@ export class CotizacionPage implements OnInit {
    guardarCotizacion(){
      this.cotizacion.obra = this.obra;
      this.cotizacion.artesano = this.uid;
+     
      this.cotizacion.deleted = false;
     console.log(this.cotizacion);
     try{

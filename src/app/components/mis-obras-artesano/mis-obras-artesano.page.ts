@@ -13,6 +13,7 @@ export class MisObrasArtesanoPage implements OnInit {
 
   area: string;
   uid:string;
+  
   bandera:boolean = false;
   cotizacion: Cotizacion = new Cotizacion();
   cotizar_valor : String;
