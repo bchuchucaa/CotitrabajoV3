@@ -31,10 +31,10 @@
         <ion-item>
             <ion-label>Selecciona una categoria</ion-label>
             <ion-select class="custom-options " [(ngModel)]="obra.categoria ">
-                <ion-select-option value="CARPINTERIA ">CARPINTERIA</ion-select-option>
-                <ion-select-option value="INDUSTRIAL ">INDUSTRIAL</ion-select-option>
-                <ion-select-option value="PLOMERIA ">PLOMERIA</ion-select-option>
-                <ion-select-option value="ARQUITECTURA ">ARQUITECTURA</ion-select-option>
+                <ion-select-option value="CARPINTERIA">CARPINTERIA</ion-select-option>
+                <ion-select-option value="INDUSTRIAL">INDUSTRIAL</ion-select-option>
+                <ion-select-option value="PLOMERIA">PLOMERIA</ion-select-option>
+                <ion-select-option value="ARQUITECTURA">ARQUITECTURA</ion-select-option>
             </ion-select>
 
 
@@ -54,9 +54,6 @@
         <ion-img [src]="obra.image?.url "></ion-img>
     </ion-card>
 
-    <ion-card *ngIf="obra.image==null ">
-        <ion-label>Todavia no has seleccionado una imagen</ion-label>
-    </ion-card>
     <div style="margin: 5%;margin-left: 20%; ">
         <ion-button (click)="guardarObra() " color="success ">Publicar
             <ion-icon name="checkmark-done-circle-outline "></ion-icon>
@@ -65,5 +62,26 @@
             <ion-icon name="trash-outline "></ion-icon>
         </ion-button>
     </div>
+    <agm-map [latitude]="lat" [longitude]="lng" (centerChange)="setNewLocation($event)">
+        <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
+            <agm-info-window>UPS</agm-info-window>
+
+        </agm-marker>
+
+
+        <agm-marker [latitude]="current.latitude" [longitude]="current.longitude" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
+            <agm-info-window>{{current.address}}</agm-info-window>
+
+        </agm-marker>
+
+        <agm-marker [latitude]="newLocation.latitude" [longitude]="newLocation.longitude" [iconUrl]="'https://cdn2.iconfinder.com/data/icons/pointers-5/24/pointer-top-left-48.png'">
+            <agm-info-window>{{newLocation.address}}</agm-info-window>
+
+        </agm-marker>
+
+
+
+
+    </agm-map>
 
 </ion-content>

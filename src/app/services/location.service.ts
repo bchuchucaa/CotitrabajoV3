@@ -59,7 +59,7 @@ export class LocationService {
     });
   } 
   async saveDireccion(localizacion: any){
-    console.log(localizacion.latitude)
+    console.log(localizacion.latitude);
     console.log('Direccion a guardar');
     console.log(localizacion.address);
     const refObra = this.afs.collection("localizaciones");

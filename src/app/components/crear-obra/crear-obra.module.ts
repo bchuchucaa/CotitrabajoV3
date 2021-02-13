@@ -8,13 +8,16 @@ import { TakePhotoComponent } from '../take-photo/take-photo.component';
 import { CrearObraPageRoutingModule } from './crear-obra-routing.module';
 
 import { CrearObraPage } from './crear-obra.page';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CrearObraPageRoutingModule
+    CrearObraPageRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC7lREbDALML3-f6Nj0lEwoFTMuWcmZdK4'
+    })
   ],
   declarations: [CrearObraPage,TakePhotoComponent]
 })

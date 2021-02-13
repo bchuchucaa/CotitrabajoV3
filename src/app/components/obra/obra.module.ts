@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ObraPageRoutingModule } from './obra-routing.module';
 
 import { ObraPage } from './obra.page';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ObraPageRoutingModule
+    ObraPageRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
+    })
   ],
   declarations: [ObraPage]
 })

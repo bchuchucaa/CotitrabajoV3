@@ -7,6 +7,12 @@ export class Obra{
     descripcion:string;
     categoria:string;
     image:any;
+    latitude:string;
+    longitud:string;
+    address:string;
+    deleted:boolean;
+    estado:boolean;
+    
     
     
 }
