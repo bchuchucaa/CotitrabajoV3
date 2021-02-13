@@ -34,16 +34,13 @@
                     </ion-item>
                     <ion-item-options>
                         <ion-item-option color="primary " (click)="editarObra(obra) ">
-                            <ion-icon slot="start " ios="ellipsis-horizontal " md="ellipsis-vertical "></ion-icon>
-                            Editar
+                            <ion-icon name="create-outline"></ion-icon>
                         </ion-item-option>
                         <ion-item-option color="primary" (click)="ListarCotizaciones(obra.uid)">
-                            <ion-icon slot="start" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-                            Cotizaciones
+                            <ion-icon name="cash-outline"></ion-icon>
                         </ion-item-option>
                         <ion-item-option color="secondary " (click)="confirmarBorrado(obra.uid) ">
-                            <ion-icon slot="start " name="archive "></ion-icon>
-                            Eliminar
+                            <ion-icon name="trash-outline"></ion-icon>
                         </ion-item-option>
                     </ion-item-options>
                 </ion-item-sliding>

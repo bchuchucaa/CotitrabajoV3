@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import { Cotizacion } from 'src/app/model/cotizacion';
+import { Obra } from 'src/app/model/obra';
 import { ArtesanoService } from 'src/app/services/artesano.service';
 
 
@@ -21,6 +22,8 @@ export class ViewArtesanoPage implements OnInit {
   obras: Observable<any[]>;
   constructor(private route: ActivatedRoute, private router: Router,
     public artesanoService: ArtesanoService) { 
+      this.area=localStorage.getItem("area");
+    this.uid=localStorage.getItem("artesano");
       this.route.queryParams.subscribe(params => {
         if (this.router.getCurrentNavigation().extras.state){
           this.area = this.router.getCurrentNavigation().extras.state.area,
@@ -30,11 +33,12 @@ export class ViewArtesanoPage implements OnInit {
       });
     }
 
-    Cotizar(String:any){
+    Cotizar(String:any,obra:Obra){
       let navigationExtras: NavigationExtras = {
         state: {
           uid: this.uid,
-          obra: String
+          obra: String,
+          obraparam:obra,
         }
       };
       this.router.navigate(['/cotizacion'], navigationExtras);
@@ -56,6 +60,17 @@ export class ViewArtesanoPage implements OnInit {
   
     ngOnInit() {
       this.obras = this.artesanoService.getObras(this.area);
+    }
+    returninit(){
+     
+      this.router.navigate(['/log-in']);
+    }
+
+    misObras(){
+      localStorage.setItem("area",this.area);
+      localStorage.setItem("artesano",this.uid);
+      this.router.navigate(['/mis-obras-artesano']);
+  
     }
 
 }

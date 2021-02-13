@@ -4,4 +4,5 @@ export class Cotizacion {
     obra:String;
     Value_cotizar:string;
     Comentario:string;
+    deleted :boolean;
 }

@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>contact-artesano</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>CONTACTAR ARTESANO</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-card>
+        <div>
+            <img src="assets/img/call.png" style="height: 200px;margin-left: 25%;margin-top: 5%;" alt="Ionic logo">
+        </div>
+        <ion-item-sliding *ngFor="let artesano of artesanos | async">
+            <ion-item>
+                {{artesano.nombres}}
+            </ion-item>
+            <ion-item>{{artesano.apellidos}} </ion-item>
+            <ion-item>{{artesano.correo}} </ion-item>
+            <ion-item>{{artesano.area}} </ion-item>
+            <ion-item>{{artesano.celular}}</ion-item>
+            <div>
+                <ion-button color="success" expand="block" (click)='Llamar(artesano.celular)'>
+                    <ion-icon name="call-outline"></ion-icon> Llamar </ion-button>
+
+            </div>
+            <div>
+                <ion-button color="warning" expand="block" (click)='finalizarObra()'>
+                    <ion-icon name="checkmark-done-circle-outline"></ion-icon>Finalizar obra </ion-button>
+
+            </div>
+            <div>
+                <ion-button color="dark" expand="block" (click)="cancelar()">
+                    <ion-icon name=" checkmark-done-circle-outline "></ion-icon>Cancelar </ion-button>
+
+            </div>
+        </ion-item-sliding>
+
+    </ion-card>
+
 
 </ion-content>

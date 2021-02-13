@@ -16,6 +16,7 @@ export class ObrasService {
     if(obra.uid==null){
       obra.uid=this.afs.createId();
       obra.codigoobrero=null;
+      obra.deleted=false;
     }
     refObra.doc(obra.uid).set(Object.assign({},obra),{merge: true})
   }
@@ -26,5 +27,15 @@ export class ObrasService {
     return this.afs.collection("obras",
             ref => ref.where("codigocliente", "==", uid)).valueChanges();
   }
+  borrarObra(uid: string){
+    const refContacto = this.afs.collection("obras");
+    refContacto.doc(uid).delete(); 
+  }
 
+  //metodo para guaradar uid artesano en obra
+  finalizarObra(uid: string,uidartesano: string){
+    const refObra = this.afs.collection("obras");
+   const aux = {codigoobrero: uidartesano};
+  refObra.doc(uid).set( {...aux}, { merge: true})
+  }
 }

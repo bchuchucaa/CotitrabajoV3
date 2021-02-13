@@ -1,24 +1,36 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>cotizacion</ion-title>
+        <ion-title>COTIZACION</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
+    <ion-card>
+        <form #signupForm="ngForm" novalidate>
+            <ion-item>
+                <ion-label position="stacked" color="primary">Cotizacion</ion-label>
+                <ion-label>$</ion-label>
+                <ion-input [(ngModel)]="cotizacion.Value_cotizar" name="cotizacion " type="text " placeholder="ejemplo:1150,50" required>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Comentario</ion-label>
+                <ion-input [(ngModel)]="cotizacion.Comentario" name="cotizacion " type="text " required>
+                </ion-input>
+            </ion-item>
 
-    <form #signupForm="ngForm" novalidate>
-        <ion-item>
-            <ion-label position="stacked" color="primary">Cotizacion</ion-label>
-            <ion-input [(ngModel)]="cotizacion.Value_cotizar" name="cotizacion " type="text " required>
-            </ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Comentario</ion-label>
-            <ion-input [(ngModel)]="cotizacion.Comentario" name="cotizacion " type="text " required>
-            </ion-input>
-        </ion-item>
-        <div class="ion-padding">
-            <ion-button (click)="guardarCotizacion()" type="submit" expand="block">Emviar </ion-button>
-        </div>
-    </form>
+            <agm-map>
+                <agm-marker [latitude]="obraparam.latitude" [longitude]="obraparam.longitud" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
+                    <agm-info-window>Obra</agm-info-window>
+                </agm-marker>
 
+            </agm-map>
+
+            <div>
+                <ion-button (click)="guardarCotizacion()" type="submit" expand="block">Enviar </ion-button>
+            </div>
+            <div>
+                <ion-button (click)="cancelar()" type="submit" color="danger" expand="block">Cancelar </ion-button>
+            </div>
+        </form>
+    </ion-card>
 </ion-content>

@@ -5,7 +5,7 @@ import { AuthGuard } from './shared/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'log-in',
     pathMatch: 'full'
   },
   {
@@ -96,7 +96,16 @@ const routes: Routes = [
   {
     path: 'registro-artesano',
     loadChildren: () => import('./components/registro-artesano/registro-artesano.module').then( m => m.RegistroArtesanoPageModule)
-  }
+  },
+  {
+    path: 'completar-register',
+    loadChildren: () => import('./components/completar-register/completar-register.module').then( m => m.CompletarRegisterPageModule)
+  },
+  {
+    path: 'mis-obras-artesano',
+    loadChildren: () => import('./components/mis-obras-artesano/mis-obras-artesano.module').then( m => m.MisObrasArtesanoPageModule)
+  },
+  
 ];
 
 @NgModule({

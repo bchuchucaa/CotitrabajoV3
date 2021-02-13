@@ -32,7 +32,17 @@ export class ArtesanoService {
   }
   getObras(area: string): Observable<any[]>{
     return this.angularfs.collection('obras',
-        ref => ref.where('categoria', '==', area)).valueChanges();
+        ref => ref.where('categoria', '==', area).where('estado', '==', false)).valueChanges();
+  }
+  getArtesanoByUid(uid: string): Observable<any[]>{
+    return this.angularfs.collection('artesanos',
+        ref => ref.where('uid', '==', uid)).valueChanges();
+  }
+  getObrasMias(area: string, uidobrero:string): Observable<any[]>{
+    console.log(area);
+    console.log(uidobrero);
+    return this.angularfs.collection('obras',
+        ref => ref.where('categoria', '==', area).where('estado', '==', true).where('codigoobrero', '==', uidobrero)).valueChanges();
   }
 
   

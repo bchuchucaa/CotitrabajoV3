@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CotizacionPageRoutingModule } from './cotizacion-routing.module';
 
 import { CotizacionPage } from './cotizacion.page';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CotizacionPageRoutingModule
+    CotizacionPageRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
+    })
   ],
   declarations: [CotizacionPage]
 })

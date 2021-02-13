@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Artesano } from 'src/app/model/artesano';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {ArtesanoService} from '../../services/artesano.service';
 import {NotificacionesService} from '../../services/notificaciones.service';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-registro-artesano',
@@ -14,7 +15,9 @@ export class RegistroArtesanoPage implements OnInit {
   artesano: Artesano = new Artesano();
 
   constructor(private route: ActivatedRoute, private router: Router, private artesanoService: ArtesanoService,
-              private notificationService: NotificacionesService) { }
+              private notificationService: NotificacionesService) { 
+                
+              }
   ngOnInit() {
   }
 
@@ -30,6 +33,31 @@ export class RegistroArtesanoPage implements OnInit {
     }
   }
 
+async saveArtesanoByGoogle(){
+    const userGoogle = await Plugins.GoogleAuth.signIn() as any;
+    let bandera = false;
+    this.artesanoService.getArtesanoByUid(userGoogle['id']).subscribe(data => {
+      if (data.length === 0){
+        this.artesano.uid = userGoogle['id'];
+        this.artesano.nombres = userGoogle['givenName'];
+        this.artesano.apellidos = userGoogle['familyName'];
+        this.artesano.correo = userGoogle['email'];
+        this.artesano.contrasenia = userGoogle['id'];
+        this.artesano.nombres = userGoogle['givenName'];
+        const navigationExtras: NavigationExtras = {
+          state: {
+            artesano: this.artesano
+          }
+        };
+        this.router.navigate(['/completar-register'], navigationExtras);
+        bandera = true;
+      }else if(data.length > 0 && bandera === false) {
+        console.log('esta entrando aqui');
+        this.notificationService.notificacionToast('Esta cuenta se encuentra ya vinculada');
+        bandera = true;
+      }
+    });
+    }
  
 
 

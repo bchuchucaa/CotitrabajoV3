@@ -1,24 +1,19 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+
         <ion-title>Registro Cliente</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <div class="signup-logo">
-        <img src="assets/img/appicon.svg" alt="Ionic Logo">
-    </div>
 
-    <form #signupForm="ngForm" novalidate>
-        <ion-list lines="none">
-            <ion-item>
-                <ion-label position="stacked" color="primary">CEDULA</ion-label>
+    <ion-card>
+        <div>
+            <img src="assets/img/createus.png" style="height: 200px;margin-left: 25%;" alt="Ionic logo">
+        </div>
+        <ion-list lines="none" style="margin-top: 1%;">
 
-            </ion-item>
             <ion-item>
                 <ion-label position="stacked " color="primary ">NOMBRES</ion-label>
                 <ion-input [(ngModel)]="cliente.nombres " name="nombres " type="text " required>
@@ -43,8 +38,12 @@
         </ion-list>
 
         <div class="ion-padding ">
-            <ion-button (click)="guardarCliente() " type="submit " expand="block ">REGISTRARME</ion-button>
+            <ion-button color="primary" (click)="guardarCliente() " type="submit " expand="block ">REGISTRARME</ion-button>
         </div>
-    </form>
+
+    </ion-card>
+
+
+
 
 </ion-content>

@@ -12,12 +12,20 @@ import { NotificacionesService } from 'src/app/services/notificaciones.service';
 export class LisCotizacionesArtesanoPage implements OnInit {
 
   
+  area : string;
   uid: string;
   obra: string;
   cotizacion: Cotizacion = new Cotizacion();
   cotizaciones: Observable<any[]>;
+  volver: boolean = false;
   
   constructor(private route: ActivatedRoute, private router: Router,private cotizacionService: CotizacionService,public notificacionesService: NotificacionesService) {
+    
+    this.area=localStorage.getItem("area")
+    this.uid=localStorage.getItem("artesano")
+
+    console.log("Esta es la area",this.area);
+    console.log("Esta es el artesano",this.uid);
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state){
@@ -28,10 +36,29 @@ export class LisCotizacionesArtesanoPage implements OnInit {
 
       }
     });
+    
    }
 
   ngOnInit() {
     this.cotizaciones = this.cotizacionService.getCotizacionesArtesano(this.obra,this.uid);
+    if (this.cotizaciones == null){
+      this.notificacionesService.notificacionToast("Aun no has realizado ninguna cotizacion!");
+      this.volver = true;
+    }else{
+      this.volver = false;
+    }
   }
 
+  volverCotizar(){
+    localStorage.setItem("area", this.area);
+    this.router.navigate(['/view-artesano']);
+  }
+
+  eliminar(string:any){
+    this.cotizacionService.eliminarCotizacionArtesano(string);
+    this.notificacionesService.notificacionToast("Se ha eliminado una cotizacion!");
+    this.router.navigate(['/lis-cotizaciones-artesano']);
+
+
+  }
 }

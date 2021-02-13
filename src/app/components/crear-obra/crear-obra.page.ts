@@ -80,6 +80,7 @@ export class CrearObraPage implements OnInit {
     this.verificarSesion();
   
     try{
+      this.obra.estado=false;
       this.obra.codigocliente=this.uidCliente;
       this.obra.latitude=this.newLocation.latitude;
       this.obra.longitud=this.newLocation.longitude;
@@ -102,6 +103,8 @@ export class CrearObraPage implements OnInit {
     
     }
   }
+ 
+
   subirImagen(event:FileList)
   {
     const file= event.item(0);
@@ -200,5 +203,6 @@ export class CrearObraPage implements OnInit {
       this.locationService.getAddressOfLocation(this.newLocation);
     }
   }
+
   
 }

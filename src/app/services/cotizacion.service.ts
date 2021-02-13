@@ -27,10 +27,28 @@ export class CotizacionService {
     //Metodo para listar las cotizaciones de la obra  del artesano
     getCotizacionesArtesano(obra: string, artesano: string): Observable<any>{
       return this.afs.collection('cotizaciones', ref =>
-          ref.where('obra', '==', obra).where('artesano', '==', artesano))
+          ref.where('obra', '==', obra).where('artesano', '==', artesano).where('deleted', '==', false))
           .valueChanges();
     }
+    //metodo para poner en contacto con artesano
+    getArtesanoContacto(artesano : string){
+      return this.afs.collection('artesanos', ref =>
+          ref.where('uid', '==', artesano)).valueChanges();
 
+    }
+    //metodo para finalizar obra
+    finalizarObra(uid: string){
+      const refObra = this.afs.collection("obras");
+     const aux = {estado: true};
+    refObra.doc(uid).set( {...aux}, { merge: true})
+    }
+
+ //metodo para eliminar cotizacion obra
+ eliminarCotizacionArtesano(uid: string){
+  const refObra = this.afs.collection("cotizaciones");
+ const aux = {deleted: true};
+refObra.doc(uid).set( {...aux}, { merge: true})
+}
 
 
 }

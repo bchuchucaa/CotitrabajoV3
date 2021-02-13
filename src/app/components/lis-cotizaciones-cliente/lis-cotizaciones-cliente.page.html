@@ -11,7 +11,16 @@
 </ion-header>
 
 <ion-content>
+    <div class="login-logo ">
+        <img src="assets/img/cotilogo.jpg" alt="Ionic logo ">
+    </div>
     <ion-card>
+        <ion-header>
+            <ion-row>
+                <ion-col>Comentario</ion-col>
+                <ion-col>Precio $</ion-col>
+            </ion-row>
+        </ion-header>
         <ion-item-sliding *ngFor="let cotizacion of cotizaciones | async">
             <ion-item>
                 <ion-row>
@@ -26,14 +35,17 @@
 
             </ion-item>
             <ion-item-options>
-                <!--
-            <ion-item-option color="primary" (click)="Contacto(cotizacion.artesano)">
-                <ion-icon name="cash-outline"></ion-icon>
-                Poner en contacto Artesano
-            </ion-item-option>
-            -->
+                <ion-item-option color="primary" (click)="Contacto(cotizacion.artesano)">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    Contacto Artesano
+                </ion-item-option>
             </ion-item-options>
         </ion-item-sliding>
     </ion-card>
 
 </ion-content>
+<footer>
+    <ion-button expand="block" color="primary" (click)="returnview()">Regresar
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-button>
+</footer>

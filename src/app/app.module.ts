@@ -19,6 +19,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { AgmCoreModule } from '@agm/core';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 
 
 
@@ -44,6 +46,7 @@ import { AgmCoreModule } from '@agm/core';
     StatusBar,
     SplashScreen,
     Camera,
+    CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -3,6 +3,8 @@ import { Obra } from 'src/app/model/obra';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ObrasService } from 'src/app/services/obras.service';
+import { NotificacionesService } from 'src/app/services/notificaciones.service';
+
 
 
 @Component({
@@ -13,7 +15,7 @@ import { ObrasService } from 'src/app/services/obras.service';
 export class ViewClientePage implements OnInit {
    uid:string;
     obras:Observable<any[]>;
-  constructor(private route: ActivatedRoute, private router: Router,public obrasService:ObrasService) {
+  constructor(private route: ActivatedRoute, private router: Router,public obrasService:ObrasService,private notificacionesService:NotificacionesService) {
     this.uid=localStorage.getItem("uid")
     
 
@@ -55,8 +57,17 @@ editarObra(obra:Obra){
 editarContactoById(){
 
 }
-confirmarBorrado(uid:string){
 
+async borrarContacto(uid: string){
+  this.obrasService.borrarObra(uid);
+  this.notificacionesService.notificacionToast("Obra borrada..!");
+}
+
+async confirmarBorrado(uid: string) {
+  this.notificacionesService.confirmacion(
+      "Confirmar", 
+      "Esta seguro de borrar", 
+      this.borrarContacto.bind(this, uid));
 }
 singOut(){
   localStorage.setItem("uid", "");
