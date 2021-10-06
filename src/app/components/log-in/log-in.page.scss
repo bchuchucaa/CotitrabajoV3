@@ -2,6 +2,7 @@
     padding: 20px 0;
     min-height: 200px;
     text-align: center;
+    
 }
 
 .login-logo img {
@@ -12,14 +13,19 @@
     margin-bottom: 0;
 }
 
-.facebook {
-    background: #4267B2;
-}
 
-ion-content {
-    --ion-background-color: #2a4d69;
+
+div {
+    background-image: url("../../../assets/backgroundLogin.jpeg");
+    margin: auto;
+    height: 100%; display: flex; align-items: center; justify-content: center;
 }
 
 ion-card {
     --ion-background-color: #ffffff;
+    width: 80%;
+    padding: 5%;
+    
+    
 }
+

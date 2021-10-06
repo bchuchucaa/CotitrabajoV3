@@ -1,59 +1,55 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-avatar slot="start">
-            <img src="assets/icon/iconlogo.png" alt="Ionic logo">
-        </ion-avatar>
-
-        <ion-title>Login</ion-title>
-    </ion-toolbar>
-</ion-header>
-
-
-<ion-content>
-    <div>
-        <img src="assets/img/createus.png" style="height: 200px;margin-left: 25%;margin-top: 5%;" alt="Ionic logo">
-    </div>
-    <ion-card>
-        <form #loginForm="ngForm" novalidate>
-
-            <ion-card>
-                <ion-list>
-                    <ion-item>
-                        <ion-label position="floating" color="primary" type="text">Username</ion-label>
-                        <ion-input name="username" [(ngModel)]="cliente.correo" type="text" spellcheck="false" autocapitalize="off" required>
-                        </ion-input>
-                    </ion-item>
+<div>
 
 
 
-                    <ion-item>
-                        <ion-label position="floating" color="primary">Password</ion-label>
-                        <ion-input name="password" [(ngModel)]="cliente.contrasena" type="password" required>
-                        </ion-input>
-                    </ion-item>
 
 
-                </ion-list>
-            </ion-card>
-            <ion-card>
-                <ion-row>
-                    <ion-col>
-                        <ion-button expand="block" color="danger" (click)="googleLogin()">
-                            <ion-icon name="logo-google"></ion-icon>oogle
-                        </ion-button>
-                    </ion-col>
 
-                    <ion-col>
-                        <ion-button (click)=" loInCliente() " type="submit " expand="block ">Login</ion-button>
-                    </ion-col>
-                    <ion-col>
-                        <ion-button (click)="registroCliente() " color="success" expand="block ">Registrate
-                            <ion-icon name="pencil-outline"></ion-icon>
-                        </ion-button>
-                    </ion-col>
-                </ion-row>
-                <a routerLink="/log-in-artesano">Eres artesano..? registrate aqui </a>
-            </ion-card>
-        </form>
+
+
+    <ion-card class="formulario">
+        <header>CotitrabajoEC</header>
+
+        <img src="assets/img/login.gif" alt="Ionic logo">
+
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating" color="primary" type="text">Username</ion-label>
+                <ion-input name="username" [(ngModel)]="cliente.correo" type="text" spellcheck="false"
+                    autocapitalize="off" required>
+                </ion-input>
+            </ion-item>
+
+
+
+            <ion-item>
+                <ion-label position="floating" color="primary">Password</ion-label>
+                <ion-input name="password" [(ngModel)]="cliente.contrasena" type="password" required>
+                </ion-input>
+            </ion-item>
+
+
+        </ion-list>
+
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="danger" (click)="googleLogin()">
+                    <ion-icon name="logo-google"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <ion-col>
+                <ion-button (click)=" loInCliente() " type="submit " expand="block ">Login</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="registroCliente() " color="success" expand="block ">Registrate
+                    <ion-icon name="pencil-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <a class="redirect" routerLink="/log-in-artesano">Eres artesano..? registrate aqui </a>
     </ion-card>
-</ion-content>
+
+
+
+</div>
