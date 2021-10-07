@@ -17,15 +17,15 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./log-in.page.scss'],
 })
 export class LogInPage implements OnInit {
-  cliente:Cliente= new Cliente();
+  cliente: Cliente = new Cliente();
   coincidenciasLogIn: Observable<any[]>;
-  coincidencias:any;
+  coincidencias: any;
   userInfo = null;
-  email=null;
-  givenname=null;
-  familyname=null;
-  
-  constructor(private loadingCtrl: LoadingController,private route: ActivatedRoute, private router: Router,public clienteService:ClienteService,public notificacioneservice:NotificacionesService,private aSvc:AuthService ) { 
+  email = null;
+  givenname = null;
+  familyname = null;
+
+  constructor(private loadingCtrl: LoadingController, private route: ActivatedRoute, private router: Router, public clienteService: ClienteService, public notificacioneservice: NotificacionesService, private aSvc: AuthService) {
     localStorage.setItem("uid", "");
   }
 
@@ -33,35 +33,38 @@ export class LogInPage implements OnInit {
 
   }
 
-  registroCliente(){
+  registroCliente() {
     this.router.navigate(['register']);
   }
-  async loInCliente(){
+
+  async loInCliente() {
     const loading = await this.loadingCtrl.create({
       message: 'Porfavor Espere..'
-    });  
-    await loading.present(); 
-
-    console.log("correo ",this.cliente.correo,"contrasena ",this.cliente.contrasena);
-   
-   
-  
-    await this.clienteService.logInClient(this.cliente.correo,this.cliente.contrasena).then(data=> this.coincidencias=(JSON.parse(JSON.stringify(data))));
-   
-    let codigo=this.coincidencias['uid'];
+    });
+    await  loading.present();
     
-   
-   if(codigo!=null){
-      const url='/view-cliente/'+ codigo;
-      
+    await this.clienteService
+      .logInClient(this.cliente.correo, this.cliente.contrasena)
+      .then(data =>{
+        try {
+          this.coincidencias = (JSON.parse(JSON.stringify(data)))
+        } catch (error) {
+          this.coincidencias= {"uid":null};
+        }
+        
+      }  
+      );
+    let codigo = this.coincidencias['uid'];
+    if (codigo != null) {
+      const url = '/view-cliente/' + codigo;
       this.router.navigate([url]);
-      
       loading.dismiss();
-   }else{
-    loading.dismiss();
-    this.notificacioneservice.notificacionToast("No pudimos encontrar tu cuenta..!  :(");
-    this.router.navigate(['/log-in']);
-  } 
+    } else {
+      console.log("NO PUDIMOS ENCONTRAR TU CUENTA");
+      this.notificacioneservice.notificacionToast("No pudimos encontrar tu cuenta..!  :(");
+      loading.dismiss();
+      this.router.navigate(['/log-in']);
+    }
 
 
   }
@@ -73,21 +76,21 @@ export class LogInPage implements OnInit {
     const familyName = 'family_name';
     const email = 'email';
     const id = 'id';
-    const correos=googleUser['email'];
-    const password=googleUser['id'];
-    await this.clienteService.logInClient(correos,password).then(data=> this.coincidencias=(JSON.parse(JSON.stringify(data))));
-    
-    let codigo=this.coincidencias['uid'];
-    if(codigo!=null){
+    const correos = googleUser['email'];
+    const password = googleUser['id'];
+    await this.clienteService.logInClient(correos, password).then(data => this.coincidencias = (JSON.parse(JSON.stringify(data))));
+
+    let codigo = this.coincidencias['uid'];
+    if (codigo != null) {
       localStorage.setItem("uid", codigo);
-        const url='/view-cliente/'+ codigo;
-        this.router.navigate([url]); 
- 
-     }else{
+      const url = '/view-cliente/' + codigo;
+      this.router.navigate([url]);
+
+    } else {
       this.notificacioneservice.notificacionToast("No pudimos encontrar tu cuenta..!  :(");
       this.router.navigate(['/log-in']);
-    }   
-   // this.aSvc.login(this.userInfo.email);  
+    }
+    // this.aSvc.login(this.userInfo.email);  
   }
-  
+
 }

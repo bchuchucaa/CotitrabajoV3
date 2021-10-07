@@ -3,44 +3,43 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-
         <ion-title>Login Artesano</ion-title>
     </ion-toolbar>
 </ion-header>
+<div>
+    <ion-card>
+        <header>CotitrabajoEC</header>
+        <img src="assets/img/loginArtesano.gif" alt="LogoLoginArt" />
+        <form #loginForm="ngForm" novalidate>
+            
+            <ion-list>
+                <ion-item>
+                    <ion-label position="stacked" color="primary">Correo</ion-label>
+                    <ion-input name="mail" [(ngModel)]="artesano.correo" type="text" spellcheck="false"
+                        autocapitalize="off" required>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="stacked" color="primary">Password</ion-label>
+                    <ion-input name="password" [(ngModel)]="artesano.contrasenia" type="password" required>
+                    </ion-input>
+                </ion-item>
 
-<ion-content>
 
+            </ion-list>
 
-    <form #loginForm="ngForm" novalidate>
-        <ion-list>
-            <ion-item>
-                <ion-label position="stacked" color="primary">Correo</ion-label>
-                <ion-input name="mail" [(ngModel)]="artesano.correo" type="text" spellcheck="false" autocapitalize="off" required>
-                </ion-input>
-            </ion-item>
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="loginArtesano()" type="submit" expand="block">Login</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="loginArtesanoByGoogle()" type="submit" expand="block" color="danger">
+                        <ion-icon name="logo-google"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+            <a href="/registro-artesano">Registrate como artesano.</a>
+        </form>
+    </ion-card>
 
-
-
-            <ion-item>
-                <ion-label position="stacked" color="primary">Password</ion-label>
-                <ion-input name="password" [(ngModel)]="artesano.contrasenia" type="password" required>
-                </ion-input>
-            </ion-item>
-
-
-        </ion-list>
-
-        <ion-row>
-            <ion-col>
-                <ion-button (click)="loginArtesano()" type="submit" expand="block">Login</ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-button (click)="loginArtesanoByGoogle()" type="submit" expand="block" color="danger">
-                    <ion-icon name="logo-google"></ion-icon>
-                </ion-button>
-            </ion-col>
-        </ion-row>
-        <a href="/registro-artesano">Registrate como artesano.</a>
-    </form>
-
-</ion-content>
+</div>

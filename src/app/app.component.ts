@@ -20,28 +20,13 @@ export class AppComponent implements OnInit {
       icon: 'paper-plane'
     },
     {
-      title: 'Vista Cliente',
-      url: '/view-cliente',
-      icon: 'heart'
-    },
-
-    {
-      title: 'register-client',
-      url: '/registro-cliente',
-      icon: 'archive'
-    },
-    {
-      title: 'LOG-IN',
+      title: 'Salir',
       url: '/log-in',
       icon: 'trash'
     },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
-    }
+   
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = ['Mis Obras', 'Finalizadas', 'Pendiente'];
 
   constructor(
     private platform: Platform,

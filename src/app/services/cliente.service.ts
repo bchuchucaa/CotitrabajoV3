@@ -32,7 +32,9 @@ export class ClienteService {
      
   }
   async logInClient(correo:string,contrasena:string){
+    
     try{
+     
       let aux = await this.afs.collection("clientes", 
           ref => ref.where('correo', '==', correo).where('contrasena', '==', contrasena))
                     .valueChanges().pipe(first()).toPromise().then(doc => {                    	  
