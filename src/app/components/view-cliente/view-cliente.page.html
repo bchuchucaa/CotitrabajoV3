@@ -7,15 +7,46 @@
             <ion-avatar slot="start">
                 <img src="assets/icon/iconlogo.png" alt="Ionic logo">
             </ion-avatar>
-            <ion-title>Cotitrabajo EC</ion-title>
+            <ion-title>CEC: MIS OBRAS</ion-title>
+            
         </ion-toolbar>
     </ion-header>
 
     <ion-content fullscreen>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="crearNuevaObra() " color="warning" expand="block">Crear nueva obra</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="singOut()" color="dark" expand="block">Salir</ion-button>
+            </ion-col>
+
+
+        </ion-row>
+        
         <ion-list>
-            <ion-list-header>
-                Mis obras
-            </ion-list-header>
+            
+            <ion-grid *ngFor=" let obra of obras | async " >
+                <ion-row>
+                    <ion-col><ion-img id="catalogImage" [src]="obra.image?.url "></ion-img></ion-col>
+                    <ion-col>
+                        <header class="productDesc">TITULO</header>
+                        <h5 class="gridInfo">{{ obra.titulo }}</h5>
+                        <header class="productDesc">DESCRIPCION</header>
+                        <h5 class="gridInfo">{{ obra.descripcion }}</h5>
+                        <header class="productDesc">CATEGORIA</header>
+                        <h5 class="gridInfo">{{ obra.categoria }}</h5>
+                        <ion-button (click)="editarObra(obra)" color="secondary" >Editar</ion-button>
+                        <ion-button (click)="confirmarBorrado(obra.uid)" color="danger">Eliminar</ion-button>
+                        <ion-button (click)="ListarCotizaciones(obra.uid)" color="medium" expand="block">Cotizaciones</ion-button>
+                       
+
+                    </ion-col>
+                        
+
+                </ion-row>
+               
+            </ion-grid>
 
             <ion-card>
                 <ion-item-sliding *ngFor=" let obra of obras | async ">
@@ -33,7 +64,7 @@
                         </ion-label>
                     </ion-item>
                     <ion-item-options>
-                        <ion-item-option color="primary " (click)="editarObra(obra) ">
+                        <ion-item-option color="primary " (click)="editarObra(obra)">
                             <ion-icon name="create-outline"></ion-icon>
                         </ion-item-option>
                         <ion-item-option color="primary" (click)="ListarCotizaciones(obra.uid)">
@@ -50,19 +81,7 @@
 
     </ion-content>
     <footer>
-        <ion-row>
-            <ion-col>
-                <ion-button (click)="crearNuevaObra() " color="primary" expand="block">Crear nueva obra</ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-fab-button color="danger" (click)="singOut()" style="float: right;">
-
-                    <ion-icon name="close-circle-outline"></ion-icon>
-                </ion-fab-button>
-            </ion-col>
-
-
-        </ion-row>
+       
 
     </footer>
 </ion-app>

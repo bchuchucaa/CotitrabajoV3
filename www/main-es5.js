@@ -879,7 +879,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /Users/israelchuchuca/IONIC/Cotitrabajo/src/main.ts */
+      /*! /Users/moscu/Documents/GitHub/CotitrabajoV3/src/main.ts */
       "./src/main.ts");
       /***/
     }

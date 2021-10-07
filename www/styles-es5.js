@@ -526,11 +526,11 @@
     /***/
     function _(module, exports, __webpack_require__) {
       __webpack_require__(
-      /*! /Users/israelchuchuca/IONIC/Cotitrabajo/src/theme/variables.scss */
+      /*! /Users/moscu/Documents/GitHub/CotitrabajoV3/src/theme/variables.scss */
       "./src/theme/variables.scss");
 
       module.exports = __webpack_require__(
-      /*! /Users/israelchuchuca/IONIC/Cotitrabajo/src/global.scss */
+      /*! /Users/moscu/Documents/GitHub/CotitrabajoV3/src/global.scss */
       "./src/global.scss");
       /***/
     }
