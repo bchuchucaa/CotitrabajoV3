@@ -136,6 +136,8 @@ export class CrearObraPage implements OnInit {
           });
           this.isUploading=false;
           this.isUploaded =true;
+          this.notificacionesService.notificacionToast("TU IMAGEN ESTA PROCESADA..!  :)");
+
 
         },error =>{
           console.error(error);

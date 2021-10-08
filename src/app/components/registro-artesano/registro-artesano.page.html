@@ -1,45 +1,50 @@
+
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Registro Artesano</ion-title>
+        <ion-title>Cotitrabajo EC</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<div class="container">
+    <ion-card>
+        
     <form #signupForm="ngForm" novalidate>
+        <img src="./assets/img/trabajaConNosotros.gif" alt="Trabaja con Nosotros"/>
+        <ion-card-subtitle>REGISTRO ARTESANO</ion-card-subtitle>
+
         <ion-list lines="none">
             <ion-item>
-                <ion-label position="stacked" color="primary">CEDULA</ion-label>
+                <ion-label position="floating" color="primary">CEDULA</ion-label>
                 <ion-input [(ngModel)]="artesano.cedula" name="cedula " type="text " required>
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="stacked " color="primary ">NOMBRES</ion-label>
+                <ion-label position="floating" color="primary ">NOMBRES</ion-label>
                 <ion-input [(ngModel)]="artesano.nombres " name="nombres " type="text " required>
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="stacked " color="primary ">APELLIDOS</ion-label>
+                <ion-label position="floating" color="primary ">APELLIDOS</ion-label>
                 <ion-input [(ngModel)]="artesano.apellidos " name="apellidos " type="text " required>
                 </ion-input>
             </ion-item>
 
 
             <ion-item>
-                <ion-label position="stacked " color="primary ">CORREO</ion-label>
+                <ion-label position="floating" color="primary ">CORREO</ion-label>
                 <ion-input [(ngModel)]="artesano.correo " name="correo" type="text" required>
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="stacked " color="primary ">CONTRASENA</ion-label>
+                <ion-label position="floating" color="primary ">CONTRASENA</ion-label>
                 <ion-input [(ngModel)]="artesano.contrasenia " name="contrasena " type="password " required>
                 </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="stacked " color="primary ">CELULAR</ion-label>
+                <ion-label position="floating" color="primary ">CELULAR</ion-label>
                 <ion-input [(ngModel)]="artesano.celular" name="correo" type="text" required>
                 </ion-input>
             </ion-item>
@@ -60,7 +65,7 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button (click)="saveArtesano()" type="submit" expand="block"> REGISTRARME </ion-button>
+                <ion-button (click)="saveArtesano()" type="submit" expand="block" color="success"> REGISTRARME </ion-button>
             </ion-col>
             <ion-col>
 
@@ -70,5 +75,6 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+</ion-card>
 
-</ion-content>
+</div>

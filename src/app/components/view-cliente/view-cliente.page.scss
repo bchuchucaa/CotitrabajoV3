@@ -7,3 +7,15 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.catalogImage{
+    position: relative;
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-clip: padding-box;
+    padding: 10px;
+    /* just to show box-shadow still works fine */
+    box-shadow: 0 3px 9px black, inset 0 0 9px white;
+}
+#descriptionObra{
+    padding: 15px;
+}

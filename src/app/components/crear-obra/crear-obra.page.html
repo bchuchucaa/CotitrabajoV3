@@ -16,6 +16,7 @@
 
 
 <ion-content>
+<div class="container">
 
     <ion-card>
         <div class="login-logo ">
@@ -23,10 +24,12 @@
         </div>
         <ion-card-header>Datos de tu obra</ion-card-header>
         <ion-item>
-            <ion-input placeholder="Ingresa un titulo " [(ngModel)]="obra.titulo ">Titulo: </ion-input>
+            <ion-label>Titulo</ion-label>
+            <ion-input placeholder="Ingresa un titulo " [(ngModel)]="obra.titulo "></ion-input>
         </ion-item>
         <ion-item>
-            <ion-textarea placeholder="Ingresa una descripcion de tu obra " [(ngModel)]="obra.descripcion ">Descipcion: </ion-textarea>
+            <ion-label>Descripcion</ion-label>
+            <ion-textarea placeholder="Ingresa una descripcion de tu obra " [(ngModel)]="obra.descripcion "></ion-textarea>
         </ion-item>
         <ion-item>
             <ion-label>Selecciona una categoria</ion-label>
@@ -36,52 +39,56 @@
                 <ion-select-option value="PLOMERIA">PLOMERIA</ion-select-option>
                 <ion-select-option value="ARQUITECTURA">ARQUITECTURA</ion-select-option>
             </ion-select>
-
-
-
         </ion-item>
         <ion-item>
             <ion-label>Sube una fotografia</ion-label>
-            <app-take-photo [source]=" 'gallery' " (imageSelected)="imageSeleccionada($event) " (uploadFinished)="uploadFinished($event) "></app-take-photo>
-
+            <app-take-photo [source]="'gallery'" (imageSelected)="imageSeleccionada($event)" (uploadFinished)="uploadFinished($event)"></app-take-photo>
+            <ion-card *ngIf="obra.image">
+                <ion-img [src]="imgData"></ion-img>
+                <ion-img [src]="obra.image?.url"></ion-img>
+            </ion-card>
         </ion-item>
+        
+        <ion-item>
+            <ion-label>Selecciona la ubicacion de entrega</ion-label>
+        </ion-item>
+        <agm-map [latitude]="lat" [longitude]="lng" (centerChange)="setNewLocation($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
+                <agm-info-window>UPS</agm-info-window>
+    
+            </agm-marker>
+    
+    
+            <agm-marker [latitude]="current.latitude" [longitude]="current.longitude" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
+                <agm-info-window>{{current.address}}</agm-info-window>
+    
+            </agm-marker>
+    
+            <agm-marker [latitude]="newLocation.latitude" [longitude]="newLocation.longitude" [iconUrl]="'https://cdn2.iconfinder.com/data/icons/pointers-5/24/pointer-top-left-48.png'">
+                <agm-info-window>{{newLocation.address}}</agm-info-window>
+    
+            </agm-marker>
+    
+    
+    
+    
+        </agm-map>
     </ion-card>
     <!--<app-take-photo [source]=" 'photo' " (imageSelected)="imageSeleccionada($event) " (uploadFinished)="uploadFinished($event) "></app-take-photo>
     -->
 
-    <ion-card *ngIf="obra.image ">
-        <ion-img [src]="imgData "></ion-img>
-        <ion-img [src]="obra.image?.url "></ion-img>
-    </ion-card>
+    
+    
 
     <div style="margin: 5%;margin-left: 20%; ">
-        <ion-button (click)="guardarObra() " color="success ">Publicar
-            <ion-icon name="checkmark-done-circle-outline "></ion-icon>
+        <ion-button (click)="guardarObra()" color="warning">Publicar
+            <ion-icon name="checkmark-done-circle-outline"></ion-icon>
         </ion-button>
-        <ion-button color="danger ">Cancelar
-            <ion-icon name="trash-outline "></ion-icon>
+        <ion-button [routerLink]="['/view-cliente']" color="medium">Cancelar
+            <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
     </div>
-    <agm-map [latitude]="lat" [longitude]="lng" (centerChange)="setNewLocation($event)">
-        <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
-            <agm-info-window>UPS</agm-info-window>
+   
 
-        </agm-marker>
-
-
-        <agm-marker [latitude]="current.latitude" [longitude]="current.longitude" [iconUrl]="'https://cdn4.iconfinder.com/data/icons/essential-app-2/16/botton-on-launch-point-48.png'">
-            <agm-info-window>{{current.address}}</agm-info-window>
-
-        </agm-marker>
-
-        <agm-marker [latitude]="newLocation.latitude" [longitude]="newLocation.longitude" [iconUrl]="'https://cdn2.iconfinder.com/data/icons/pointers-5/24/pointer-top-left-48.png'">
-            <agm-info-window>{{newLocation.address}}</agm-info-window>
-
-        </agm-marker>
-
-
-
-
-    </agm-map>
-
+</div>
 </ion-content>

@@ -28,16 +28,16 @@
             
             <ion-grid *ngFor=" let obra of obras | async " >
                 <ion-row>
-                    <ion-col><ion-img id="catalogImage" [src]="obra.image?.url "></ion-img></ion-col>
-                    <ion-col>
+                    <ion-col class="catalogImage"><ion-img  [src]="obra.image?.url "></ion-img></ion-col>
+                    <ion-col id="descriptionObra">
                         <header class="productDesc">TITULO</header>
                         <h5 class="gridInfo">{{ obra.titulo }}</h5>
                         <header class="productDesc">DESCRIPCION</header>
                         <h5 class="gridInfo">{{ obra.descripcion }}</h5>
                         <header class="productDesc">CATEGORIA</header>
                         <h5 class="gridInfo">{{ obra.categoria }}</h5>
-                        <ion-button (click)="editarObra(obra)" color="secondary" >Editar</ion-button>
-                        <ion-button (click)="confirmarBorrado(obra.uid)" color="danger">Eliminar</ion-button>
+                        <ion-button (click)="editarObra(obra)" color="secondary" >Edit</ion-button>
+                        <ion-button (click)="confirmarBorrado(obra.uid)" color="danger">Borrar</ion-button>
                         <ion-button (click)="ListarCotizaciones(obra.uid)" color="medium" expand="block">Cotizaciones</ion-button>
                        
 
