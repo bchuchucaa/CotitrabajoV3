@@ -5,3 +5,18 @@ ion-card {
 .blanquear {
     color: white;
 }
+
+.wrapper {
+   
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+
+.obraimg{
+    float: left;
+}
+ion-card::after{
+    border-color: black;
+    border-style: solid;
+}
